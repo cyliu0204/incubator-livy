@@ -453,7 +453,8 @@ private[utils] object KubernetesExtensions {
         |sub_filter 'href="/' 'href="';
         |sub_filter 'src="/' 'src="';
         |sub_filter "/api/v1/applications" "/%s/api/v1/applications";
-        |sub_filter "/static/executorspage-template.html" "/%s/static/executorspage-template.html";
+        |sub_filter '"/static/" + templateName + "-template.html"' '"/%s/static/" + templateName + "-template.html"';
+        |sub_filter 'document.baseURI' 'document.location.href';
         |sub_filter_once off;
         |sub_filter_types text/html text/css text/javascript application/javascript;
       """.stripMargin
